@@ -106,9 +106,8 @@ Main fields:
 
 ### Service Request Fields & Relationships
 
-<!-- IMAGE 1: Put screenshots/service-request-fields.png here -->
+<img width="1273" height="668" alt="image" src="https://github.com/user-attachments/assets/6425adfc-c009-4e59-bfba-18cbab9ece91" />
 
-![Service Request Fields & Relationships](screenshots/service-request-fields.png)
 
 The Service Request object uses a Lookup Relationship with the Student object so that multiple service requests can be associated with a student.
 
