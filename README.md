@@ -270,10 +270,6 @@ The core business logic is implemented using Salesforce Flow and Validation Rule
 
 The project follows the Salesforce DX source format.
 
-<!-- IMAGE 5: Put screenshots/project-structure.png here -->
-
-![Salesforce DX Project Structure](screenshots/project-structure.png)
-
 ```text
 CampusHelpDesk/
 │
