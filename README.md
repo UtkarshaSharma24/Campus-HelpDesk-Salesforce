@@ -1,58 +1,325 @@
-# Salesforce DX Project
+# Campus HelpDesk — Salesforce
 
-Salesforce DX is a development approach that brings source-driven development, team collaboration, and continuous integration to the Salesforce Platform. Instead of working directly in an org through a web browser, you work with metadata as source files in a local DX project, track changes in version control, and deploy through automated processes.
+A Salesforce-based student service request management system designed to manage and track campus support requests across IT Support, Hostel, Library, Transport, and Academic Services.
 
-This project template gets you started with the tools and structure you need to build Salesforce applications using source control, scratch orgs, and the Salesforce CLI.
+The application uses Salesforce Custom Objects, Fields & Relationships, Record-Triggered Flows, Validation Rules, Reports, Dashboards, and SOQL to manage the complete service-request lifecycle.
 
-## Prerequisites
+---
 
-Before you start, make sure you have:
+## 📌 Project Overview
 
-- **Salesforce CLI** - Download from [developer.salesforce.com/tools/salesforcecli](https://developer.salesforce.com/tools/salesforcecli). See [Install Salesforce CLI](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_install_cli.htm) for details.
-- **VS Code with Salesforce Extension Pack** - See [Installation Instructions](https://developer.salesforce.com/docs/platform/sfvscode-extensions/guide/install.html) for details. Includes the Agentforce Vibes extension.
-- **A development org** - Sign up for a free Developer Edition org [here](https://developer.salesforce.com/signup).
-- **Dev Hub enabled** (optional, required to create scratch orgs) - You can enable Dev Hub in your development org under Setup > Dev Hub.  See [Provide Developers Access to Salesforce DX Tools](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_setup_dx_tools.htm).
+Campus HelpDesk allows student service requests to be recorded, categorized, assigned, prioritized, tracked, and resolved using Salesforce.
 
-## Project Structure
+### Request Lifecycle
 
-Your DX project follows this structure:
+```text
+Student submits Service Request
+            │
+            ▼
+     Validation Rules
+            │
+            ▼
+     Category Evaluation
+        │          │
+        ▼          ▼
+ Department      Priority
+ Assignment      Assignment
+        │          │
+        └────┬─────┘
+             ▼
+      Status → Assigned
+             │
+             ▼
+      Request Processing
+             │
+             ▼
+       Resolution Date
+             │
+             ▼
+          Resolved
+```
 
-- **`force-app/main/default/`** - Your metadata source files live in this default package directory. You can configure additional package directories in the `sfdx-project.json` file.
-- **`config/`** - Scratch org definitions and project settings
-- **`scripts/`** - Automation scripts for common tasks
-- **`sfdx-project.json`** - Project manifest that defines package directories, namespace, API version, and other project-level settings
+---
 
-See [Salesforce DX Project Configuration](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_config.htm).
+## ✨ Key Features
 
-## Get Started
+* Student and Service Request management
+* Category-based department assignment
+* Category-based priority assignment
+* Automatic status update when staff is assigned
+* Automatic resolution-date handling
+* Validation rules for data consistency
+* Custom list views for request tracking
+* SOQL queries for request analysis
+* Reports for category, department, priority, and status analysis
+* Lightning Dashboard for service-request monitoring
 
-Ready to start developing? The [Get Started with Salesforce DX](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_get_started_dx.htm) guide walks you through your first project, from creating a scratch org to creating a simple Apex class or LWC to deploying your code to a sandbox.
+---
 
-## Common Salesforce CLI Commands
+## 🧩 Salesforce Components
 
-Here are common CLI commands that you'll use the most:
+| Component              | Details                                                                                                                                                    |
+| ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Custom Objects         | Student, Service Request                                                                                                                                   |
+| Custom Fields          | Student ID, Department, Year, Subject, Description, Category, Priority, Status, Student, Assigned Department, Assigned Staff, Resolution Date, Request Age |
+| Relationship           | Student → Service Request (Lookup)                                                                                                                         |
+| Record-Triggered Flows | 4                                                                                                                                                          |
+| Validation Rules       | 3                                                                                                                                                          |
+| Reports                | 5                                                                                                                                                          |
+| Dashboard              | Campus HelpDesk Dashboard                                                                                                                                  |
+| Query Language         | SOQL                                                                                                                                                       |
+| Source Format          | Salesforce DX                                                                                                                                              |
+| Development Tools      | VS Code, Salesforce CLI                                                                                                                                    |
 
-- `sf org login web`: Authorize an org
-- `sf org open`: Open your org in a browser
-- `sf org create scratch`: Create a scratch org
-- `sf project deploy start`: Deploy metadata to your org
-- `sf project retrieve start`: Retrieve metadata from your org
-- `sf template generate <artifact>`: Scaffold new components, such as Apex classes and triggers, LWC components, Lightning apps, and more
-- `sf apex <command>`: Run Apex tests, run anonymous Apex blocks, and view logs
-- `sf data <command>`: Work with test data
-- `sf alias <command>`: Manage org aliases
-- `sf config <command>`: Configure CLI settings
+---
 
-## Use Agentforce Vibes to Build Lightning Apps
+## 🧱 Custom Objects
 
-Transform your ideas into custom Lightning apps that extend CRM workflows directly in Lightning Experience. Through natural conversations with Agentforce Vibes, implement custom objects and fields, complex business logic, and dynamic UI components. See [Build a Lightning App Using Agentforce Vibes](https://developer.salesforce.com/docs/platform/einstein-for-devs/guide/lexapp-overview.html).
+### Student
 
-## Additional Resources
+The `Student__c` custom object stores student information used by the helpdesk system.
 
-- [Agentforce Vibes Developer Guide](https://developer.salesforce.com/docs/platform/einstein-for-devs/guide/einstein-overview.html)
-- [Salesforce CLI Installation Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
-- [Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/)
-- [Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/)
-- [Salesforce CLI Plugin Development Guide](https://developer.salesforce.com/docs/platform/salesforce-cli-plugin/guide/conceptual-overview.html)
-- [Salesforce VS Code Extensions Documentation](https://developer.salesforce.com/tools/vscode/)
+Main fields:
 
+* Student ID
+* Email
+* Department
+* Year
+
+### Service Request
+
+The main business object is `Request_Number__c`.
+
+Main fields:
+
+* Request Number
+* Subject
+* Description
+* Category
+* Priority
+* Status
+* Student
+* Assigned Department
+* Assigned Staff
+* Resolution Date
+* Request Age
+
+### Service Request Fields & Relationships
+
+<!-- IMAGE 1: Put screenshots/service-request-fields.png here -->
+
+![Service Request Fields & Relationships](screenshots/service-request-fields.png)
+
+The Service Request object uses a Lookup Relationship with the Student object so that multiple service requests can be associated with a student.
+
+---
+
+## ⚙️ Salesforce Automation
+
+The project contains four Record-Triggered Flows.
+
+| Flow                         | Purpose                                                    |
+| ---------------------------- | ---------------------------------------------------------- |
+| Auto Assign Department       | Assigns the department based on request category           |
+| Set Default Request Priority | Sets priority according to request category                |
+| Update Status When Assigned  | Changes status to Assigned when staff is assigned          |
+| Set Resolution Date          | Populates the resolution date when the request is resolved |
+
+### Flow Configuration
+
+<!-- IMAGE 2: Put screenshots/flows.png here -->
+
+![Salesforce Flows](screenshots/flows.png)
+
+### 1. Auto Assign Department
+
+The flow evaluates the selected request category and assigns the corresponding department.
+
+Supported categories:
+
+* IT Support
+* Hostel
+* Library
+* Transport
+* Academic Services
+
+### 2. Set Default Request Priority
+
+The flow assigns a default priority according to the selected category.
+
+Examples:
+
+* IT Support → Medium
+* Hostel → Medium
+* Library → Low
+* Transport → High
+* Academic Services → Medium
+
+### 3. Update Status When Assigned
+
+When an Assigned Staff value is added to a request, the flow updates the request status to `Assigned`.
+
+### 4. Set Resolution Date
+
+When a request is marked as `Resolved`, the flow populates the Resolution Date using the current date and time.
+
+---
+
+## ✅ Validation Rules
+
+Three validation rules are configured on the Service Request object.
+
+<!-- IMAGE 3: Put screenshots/validation-rules.png here -->
+
+![Validation Rules](screenshots/validation-rules.png)
+
+| Validation Rule                            | Purpose                                                          |
+| ------------------------------------------ | ---------------------------------------------------------------- |
+| `Required_Request_Information`             | Ensures Subject, Description, Student, and Category are provided |
+| `Resolution_Date_Cannot_Be_Before_Created` | Prevents Resolution Date from being earlier than Created Date    |
+| `Resolved_Requires_Resolution_Date`        | Requires Resolution Date when Status is Resolved                 |
+
+These rules help maintain consistent and accurate service-request data.
+
+---
+
+## 📊 Reports & Dashboard
+
+The project includes Salesforce reports for monitoring service requests.
+
+### Reports
+
+* Requests by Category
+* Requests by Department
+* Resolved vs Unresolved
+* High Priority Requests
+* Open Service Requests
+
+### Campus HelpDesk Dashboard
+
+The dashboard provides a visual overview of:
+
+* Requests by Category
+* Requests by Department
+* Open Service Requests
+* High Priority Requests
+* Status Distribution
+
+<!-- IMAGE 4: Put screenshots/dashboard.png here -->
+
+![Campus HelpDesk Dashboard](screenshots/dashboard.png)
+
+---
+
+## 🔎 SOQL Queries
+
+SOQL was used to retrieve and analyze service-request data.
+
+### High Priority Requests
+
+```sql
+SELECT Id, Name, Subject__c, Priority__c, Status__c
+FROM Request_Number__c
+WHERE Priority__c = 'High'
+```
+
+### Open Requests
+
+```sql
+SELECT Id, Name, Subject__c, Status__c
+FROM Request_Number__c
+WHERE Status__c NOT IN ('Resolved', 'Closed')
+```
+
+### Requests by Department
+
+```sql
+SELECT Id, Name, Subject__c, Priority__c, Status__c
+FROM Request_Number__c
+WHERE Assigned_Department__c = 'IT Support'
+```
+
+### Requests by Category
+
+```sql
+SELECT Category__c, COUNT(Id)
+FROM Request_Number__c
+GROUP BY Category__c
+```
+
+---
+
+## 🔄 Request Lifecycle
+
+The main request-processing workflow is:
+
+1. Create Service Request
+2. Validate required information
+3. Evaluate Category
+4. Assign Department
+5. Set Default Priority
+6. Assign Staff
+7. Update Status
+8. Process Request
+9. Set Resolution Date
+10. Mark Request as Resolved
+
+The core business logic is implemented using Salesforce Flow and Validation Rules.
+
+---
+
+## 📁 Project Structure
+
+The project follows the Salesforce DX source format.
+
+<!-- IMAGE 5: Put screenshots/project-structure.png here -->
+
+![Salesforce DX Project Structure](screenshots/project-structure.png)
+
+```text
+CampusHelpDesk/
+│
+├── force-app/
+│   └── main/
+│       └── default/
+│           ├── flows/
+│           │   ├── Auto_Assign_Department.flow-meta.xml
+│           │   ├── Set_Default_Request_Priority.flow-meta.xml
+│           │   ├── Set_Resolution_Date.flow-meta.xml
+│           │   └── Update_Status_When_Assigned.flow-meta.xml
+│           │
+│           ├── objects/
+│           │   ├── Student__c/
+│           │   └── Request_Number__c/
+│           │
+│           └── tabs/
+│               └── Request_Number__c.tab-meta.xml
+│
+├── manifest/
+│   └── package.xml
+│
+├── screenshots/
+│
+├── .forceignore
+├── .gitignore
+├── README.md
+└── sfdx-project.json
+```
+
+### Important Directories
+
+| Directory / File          | Purpose                                   |
+| ------------------------- | ----------------------------------------- |
+| `force-app/main/default/` | Main Salesforce metadata source directory |
+| `objects/`                | Custom object and field metadata          |
+| `flows/`                  | Salesforce Flow metadata                  |
+| `tabs/`                   | Custom tab metadata                       |
+| `manifest/package.xml`    | Metadata package manifest                 |
+| `sfdx-project.json`       | Salesforce DX project configuration       |
+| `screenshots/`            | Project screenshots                       |
+
+---
+
+## 🛠️ Salesforce DX Setup
+
+### Prerequisites
