@@ -126,9 +126,8 @@ The project contains four Record-Triggered Flows.
 
 ### Flow Configuration
 
-<!-- IMAGE 2: Put screenshots/flows.png here -->
+<img width="1600" height="345" alt="image" src="https://github.com/user-attachments/assets/d3bf3ddc-dd15-4609-be07-300a284c6abb" />
 
-![Salesforce Flows](screenshots/flows.png)
 
 ### 1. Auto Assign Department
 
@@ -168,9 +167,8 @@ When a request is marked as `Resolved`, the flow populates the Resolution Date u
 
 Three validation rules are configured on the Service Request object.
 
-<!-- IMAGE 3: Put screenshots/validation-rules.png here -->
+<img width="1592" height="428" alt="image" src="https://github.com/user-attachments/assets/c8a16730-522c-4550-a768-27f66d11e7fc" />
 
-![Validation Rules](screenshots/validation-rules.png)
 
 | Validation Rule                            | Purpose                                                          |
 | ------------------------------------------ | ---------------------------------------------------------------- |
@@ -206,7 +204,8 @@ The dashboard provides a visual overview of:
 
 <!-- IMAGE 4: Put screenshots/dashboard.png here -->
 
-![Campus HelpDesk Dashboard](screenshots/dashboard.png)
+<img width="1600" height="759" alt="image" src="https://github.com/user-attachments/assets/dce31867-c948-4f38-b3d1-3f18da0d7ca8" />
+
 
 ---
 
