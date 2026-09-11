@@ -161,6 +161,8 @@ When an Assigned Staff value is added to a request, the flow updates the request
 
 When a request is marked as `Resolved`, the flow populates the Resolution Date using the current date and time.
 
+<img width="1600" height="530" alt="image" src="https://github.com/user-attachments/assets/74e1aa2f-6a47-4e27-b98a-cc70d4eed0cc" />
+
 ---
 
 ## ✅ Validation Rules
