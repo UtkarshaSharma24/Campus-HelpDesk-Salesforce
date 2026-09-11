@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Required_Request_Information</fullName>
+    <active>true</active>
+    <description>Ensures all required request information is provided before submission.</description>
+    <errorConditionFormula>OR(
+    ISBLANK(Subject__c),
+    ISBLANK(Description__c),
+    ISBLANK(Student__c),
+    ISBLANK(TEXT(Category__c))
+)</errorConditionFormula>
+    <errorMessage>Subject, Description, Student, and Category are required before submitting a request.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>67.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Assign_Academic_Department</name>
+        <label>Assign Academic Department</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Assigned_Department__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Academic Services</stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <name>Assign_Hostel_Department</name>
+        <label>Assign Hostel Department</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Assigned_Department__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Hostel</stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <name>Assign_IT_Support_Department</name>
+        <label>Assign IT Support Department</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Assigned_Department__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>IT Support</stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <name>Assign_Library_Department</name>
+        <label>Assign Library Department</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Assigned_Department__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Library</stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <name>Assign_Transport_Department</name>
+        <label>Assign Transport Department</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Assigned_Department__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Transport</stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <decisions>
+        <name>Assign_Department_by_Category</name>
+        <label>Assign Department by Category</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>IT_Support</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Category__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>IT Support</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_IT_Support_Department</targetReference>
+            </connector>
+            <label>IT Support</label>
+        </rules>
+        <rules>
+            <name>Hostel</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record</leftValueReference>
+                <operator>EqualTo</operator>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Hostel_Department</targetReference>
+            </connector>
+            <label>Hostel</label>
+        </rules>
+        <rules>
+            <name>Library</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Category__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Library</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Library_Department</targetReference>
+            </connector>
+            <label>Library</label>
+        </rules>
+        <rules>
+            <name>Transport</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Category__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Transport</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Transport_Department</targetReference>
+            </connector>
+            <label>Transport</label>
+        </rules>
+        <rules>
+            <name>Academic_Services</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Category__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Academic Services</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Academic_Department</targetReference>
+            </connector>
+            <label>Academic Services</label>
+        </rules>
+    </decisions>
+    <description>Automatically assigns the service request department based on the selected category.</description>
+    <environments>Default</environments>
+    <interviewLabel>Auto Assign Department {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Auto Assign Department</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Assign_Department_by_Category</targetReference>
+        </connector>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Category__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <object>Request_Number__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

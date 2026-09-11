@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Request_Age__c</fullName>
+    <description>Number of days taken to resolve the service request</description>
+    <externalId>false</externalId>
+    <formula>IF(
+    ISBLANK(Resolution_Date__c),
+    TODAY() - DATEVALUE(CreatedDate),
+    DATEVALUE(Resolution_Date__c) - DATEVALUE(CreatedDate)
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Shows the age of the service request in days</inlineHelpText>
+    <label>Request Age</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

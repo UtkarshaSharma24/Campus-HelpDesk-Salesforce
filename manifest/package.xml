@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+    <types>
+        <members>Student__c</members>
+        <members>Request_Number__c</members>
+        <name>CustomObject</name>
+    </types>
+
+    <types>
+        <members>Auto_Assign_Department</members>
+        <members>Set_Default_Request_Priority</members>
+        <members>Update_Status_When_Assigned</members>
+        <members>Set_Resolution_Date</members>
+        <name>Flow</name>
+    </types>
+
+    <types>
+        <members>Request_Number__c</members>
+        <name>CustomTab</name>
+    </types>
+
+    <version>67.0</version>
+
+</Package>

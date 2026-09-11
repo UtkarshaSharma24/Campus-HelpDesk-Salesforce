@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Year__c</fullName>
+    <description>Current academic year of the student</description>
+    <inlineHelpText>Select the student&apos;s current year</inlineHelpText>
+    <label>Year</label>
+    <required>true</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>1st Year</fullName>
+                <default>false</default>
+                <label>1st Year</label>
+            </value>
+            <value>
+                <fullName>2nd Year</fullName>
+                <default>false</default>
+                <label>2nd Year</label>
+            </value>
+            <value>
+                <fullName>3rd Year</fullName>
+                <default>false</default>
+                <label>3rd Year</label>
+            </value>
+            <value>
+                <fullName>4th Year</fullName>
+                <default>false</default>
+                <label>4th Year</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

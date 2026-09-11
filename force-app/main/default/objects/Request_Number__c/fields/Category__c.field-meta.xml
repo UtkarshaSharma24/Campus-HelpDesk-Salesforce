@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Category__c</fullName>
+    <description>Category of the campus service request</description>
+    <inlineHelpText>Select the type of service request</inlineHelpText>
+    <label>Category</label>
+    <required>true</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>IT Support</fullName>
+                <default>false</default>
+                <label>IT Support</label>
+            </value>
+            <value>
+                <fullName>Hostel</fullName>
+                <default>false</default>
+                <label>Hostel</label>
+            </value>
+            <value>
+                <fullName>Library</fullName>
+                <default>false</default>
+                <label>Library</label>
+            </value>
+            <value>
+                <fullName>Transport</fullName>
+                <default>false</default>
+                <label>Transport</label>
+            </value>
+            <value>
+                <fullName>Academic Services</fullName>
+                <default>false</default>
+                <label>Academic Services</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>
