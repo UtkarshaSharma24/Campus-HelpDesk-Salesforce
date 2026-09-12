@@ -316,53 +316,107 @@ CampusHelpDesk/
 
 ---
 
-🛠️ Salesforce DX Setup
-Prerequisites
-Salesforce CLI
-Visual Studio Code
-Salesforce Extension Pack
-Salesforce Developer Edition or Trailhead Playground
-Clone the Repository
+## 🛠️ Salesforce DX Setup
+
+### Prerequisites
+
+Make sure the following tools are installed and configured:
+
+* [Salesforce CLI](https://developer.salesforce.com/tools/salesforcecli)
+* [Visual Studio Code](https://code.visualstudio.com/)
+* Salesforce Extension Pack
+* Salesforce Developer Edition or Trailhead Playground
+
+### Clone the Repository
+
+```bash
 git clone https://github.com/UtkarshaSharma24/Campus-HelpDesk-Salesforce.git
 cd Campus-HelpDesk-Salesforce/CampusHelpDesk
-Authenticate Salesforce Org
+```
+
+### Authenticate Salesforce Org
+
+Authenticate your Salesforce org using the Salesforce CLI:
+
+```bash
 sf org login web --alias CampusHelpDesk
-Deploy Project
+```
+
+### Deploy Project
+
+Deploy the Salesforce metadata to your authenticated org:
+
+```bash
 sf project deploy start --target-org CampusHelpDesk
-Open Salesforce Org
+```
+
+### Open Salesforce Org
+
+Open the Salesforce org directly from the CLI:
+
+```bash
 sf org open --target-org CampusHelpDesk
-Retrieve Metadata
+```
+
+### Retrieve Metadata
+
+To retrieve metadata from the Salesforce org:
+
+```bash
 sf project retrieve start --manifest manifest/package.xml --target-org CampusHelpDesk
-🧪 Testing
+```
 
-The application was tested using different service request scenarios to verify:
+---
 
-Category-based department assignment
-Automatic priority assignment
-Staff assignment and status update
-Resolution date automation
-Validation rules
-Request age calculation
-Reports and dashboard data
-🚀 Future Enhancements
-Email notifications for students and staff
-Automated escalation for critical requests
-Student self-service portal
-Role-based access for different departments
-Additional dashboard analytics
-SLA tracking and notifications
-💻 Technologies Used
-Salesforce CRM
-Salesforce Flow
-Custom Objects
-SOQL
-Validation Rules
-Reports & Dashboards
-Salesforce DX
-Salesforce CLI
-Visual Studio Code
-Git & GitHub
-📁 Project Structure
+## 🧪 Testing
+
+The application was tested using different student service-request scenarios to verify the functionality of the system.
+
+Testing covered:
+
+* Category-based department assignment
+* Automatic priority assignment
+* Staff assignment and status updates
+* Resolution date automation
+* Validation rules
+* Request age calculation
+* Reports and dashboard data
+* End-to-end service request workflow
+
+---
+
+## 🚀 Future Enhancements
+
+The following features can be added in future versions:
+
+* Email notifications for students and staff
+* Automated escalation for critical requests
+* Student self-service portal
+* Role-based access for different departments
+* Additional dashboard analytics
+* SLA tracking and notifications
+* Enhanced request monitoring and reporting
+
+---
+
+## 💻 Technologies Used
+
+* **Salesforce CRM**
+* **Salesforce Flow**
+* **Custom Objects & Fields**
+* **SOQL**
+* **Validation Rules**
+* **Reports & Dashboards**
+* **Salesforce DX**
+* **Salesforce CLI**
+* **Visual Studio Code**
+* **Git & GitHub**
+
+---
+
+## 📁 Project Structure
+
+```text
 CampusHelpDesk/
 ├── force-app/
 │   └── main/
@@ -371,17 +425,26 @@ CampusHelpDesk/
 │           ├── flows/
 │           ├── tabs/
 │           └── ...
+│
 ├── manifest/
 │   └── package.xml
+│
 ├── screenshots/
 │   ├── dashboard.png
 │   ├── service-request-fields.png
 │   ├── flows.png
 │   └── validation-rules.png
+│
 ├── sfdx-project.json
 └── README.md
-👨‍💻 Development Workflow
-Configure Salesforce
+```
+
+---
+
+## 👨‍💻 Development Workflow
+
+```text
+Configure Salesforce Org
         ↓
 Create Custom Objects & Fields
         ↓
@@ -396,8 +459,14 @@ Test Application
 Retrieve Metadata
         ↓
 Push Project to GitHub
-📌 Project Summary
+```
 
-Campus HelpDesk demonstrates practical Salesforce CRM development using custom objects, relationships, record-triggered automation, validation rules, SOQL, reports, dashboards, and Salesforce DX.
+---
 
-The project focuses on creating a structured workflow for managing student service requests from submission through resolution.
+## 📌 Project Summary
+
+**Campus HelpDesk** is a Salesforce-based student service request management system designed to organize and automate the handling of service requests across different campus departments.
+
+The project demonstrates practical use of **Salesforce CRM, custom objects, relationships, validation rules, record-triggered flows, SOQL, reports, dashboards, and Salesforce DX**.
+
+The system provides a structured workflow for managing student requests from **submission and department assignment through staff handling, status updates, and final resolution**.
