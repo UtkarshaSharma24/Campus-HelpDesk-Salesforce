@@ -414,33 +414,6 @@ The following features can be added in future versions:
 
 ---
 
-## 📁 Project Structure
-
-```text
-CampusHelpDesk/
-├── force-app/
-│   └── main/
-│       └── default/
-│           ├── objects/
-│           ├── flows/
-│           ├── tabs/
-│           └── ...
-│
-├── manifest/
-│   └── package.xml
-│
-├── screenshots/
-│   ├── dashboard.png
-│   ├── service-request-fields.png
-│   ├── flows.png
-│   └── validation-rules.png
-│
-├── sfdx-project.json
-└── README.md
-```
-
----
-
 ## 👨‍💻 Development Workflow
 
 ```text
